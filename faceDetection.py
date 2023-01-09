@@ -11,17 +11,14 @@ while True:
         faces = classifier.detectMultiScale(frame)
         for face in faces:
             x,y,w,h = face
-
-            cut = frame[y:y+h, x:x+w]
-
             out = cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 10)
 
-        cv2.imshow("My Window ", out)
-        cv2.imshow("cut Window",cv2.resize(cut, (28,28)))
+        cv2.imshow("My Window ", frame)
+
     key = cv2.waitKey(1)
     
     if key == ord("q"):
         break
 
 cap.release()
-cv2.destoryAllWindows()
+cap.destoryAllWindows()
